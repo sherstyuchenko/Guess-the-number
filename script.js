@@ -30,30 +30,18 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.highscore').textContent = highscore;
     }
 
-    //WHEN GUESS IS TOO HIGH
-  } else if (guess > secretNumber) {
+    //WHEN GUESS IS WROONG
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = '🙄 Щось це забагато...';
+      document.querySelector('.message').textContent =
+        guess > secretNumber
+          ? '🙄 Щось це забагато...'
+          : '🙄 Хмм, спробуй якесь більше число...';
       score--;
       document.querySelector('.score').textContent = score;
     } else {
       document.querySelector('.number').style.width = '60rem';
       document.querySelector('.number').textContent = 'Мдаа...';
-      document.querySelector('.message').textContent =
-        'Ти дуже тупий🥲. Ти програв';
-      document.querySelector('.score').textContent = 0;
-    }
-
-    //WHEN GUESS IS TOO LOW
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent =
-        '🙄 Хмм, спробуй якесь більше число...';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.number').textContent = 'Мдаа...';
-      document.querySelector('.number').style.width = '60rem';
       document.querySelector('.message').textContent =
         'Ти дуже тупий🥲. Ти програв';
       document.querySelector('.score').textContent = 0;
